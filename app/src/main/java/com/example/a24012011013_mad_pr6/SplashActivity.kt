@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
-    lateinit var guniframeanimation : AnimationDrawable
-    lateinit var imglogo : ImageView
-    lateinit var guniAnimation: Animation
+class SplashActivity : AppCompatActivity(), Animation.AnimationListener{
+    lateinit var guniframeanim: AnimationDrawable
+    lateinit var imglogo: ImageView
+    lateinit var gunianim: Animation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,28 +25,25 @@ class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        imglogo = findViewById(R.id.imglogo)
+
+        imglogo = findViewById(R.id.imgLogo)
         imglogo.setBackgroundResource(R.drawable.uvpce_animation_list)
-        guniframeanimation = imglogo.background as AnimationDrawable
-        guniAnimation = AnimationUtils.loadAnimation(this,R.anim.twin_animation)
-        guniAnimation.setAnimationListener(this)
+        guniframeanim = imglogo.background as AnimationDrawable
+        gunianim = AnimationUtils.loadAnimation(this,R.anim.twin_animation)
+        gunianim.setAnimationListener(this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus){
-            guniframeanimation.start()
-            imglogo.startAnimation(guniAnimation)
-        }else {
-            guniframeanimation.stop()
+        if(hasFocus){
+            guniframeanim.start()
+            imglogo.startAnimation(gunianim)
+        } else {
+            guniframeanim.stop()
         }
     }
-
     override fun onAnimationEnd(animation: Animation?) {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
+        Intent(this, MainActivity::class.java).also{startActivity(it)}
     }
 
     override fun onAnimationRepeat(animation: Animation?) {
@@ -55,5 +53,4 @@ class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
     override fun onAnimationStart(animation: Animation?) {
 
     }
-
 }
