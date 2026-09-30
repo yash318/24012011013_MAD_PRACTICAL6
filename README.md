@@ -453,8 +453,6 @@ ic_heart_100.xml
 
 ### Main Screen
 
-Add your main-screen screenshot here:
-
 ```text
 ![Main Screen](screenshots/main_screen.png)
 ```
