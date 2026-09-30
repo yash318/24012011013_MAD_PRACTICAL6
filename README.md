@@ -447,15 +447,12 @@ ic_heart_100.xml
 
 ### Splash Screen
 
-```text
 ![Splash Screen](screenshots/splash_screen.png)
-```
+
 
 ### Main Screen
 
-```text
 ![Main Screen](screenshots/main_screen.png)
-```
 
 
 # 📁 Important Files
